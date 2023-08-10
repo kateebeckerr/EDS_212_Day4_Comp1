@@ -1,0 +1,17 @@
+---
+title: "Day 4 Comp Sesh 1"
+format: html
+editor: visual
+---
+
+## Create vectors 
+
+```{r}
+rain <- c(3, 5, 10.1, 6)
+
+#scaling, changing magnitude
+rain_scaled <- 5 * rain
+
+
+
+```
