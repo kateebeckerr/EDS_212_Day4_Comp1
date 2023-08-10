@@ -4,7 +4,7 @@ format: html
 editor: visual
 ---
 
-## Create vectors 
+## Create vectors
 
 ```{r}
 rain <- c(3, 5, 10.1, 6)
@@ -13,5 +13,78 @@ rain <- c(3, 5, 10.1, 6)
 rain_scaled <- 5 * rain
 
 
+```
 
+## Create Matrices
+
+```{r}
+#sequences of values and wrap into matrix, long vector and then populate 3x5 ...
+my_values <- seq(from = 1, to = 10)
+#wrap in 2x5 matrix, byrow = FALSE (matrices from sequences known direction its popualting in), naturally goes by column but want popualted by rows 
+my_matrix <- matrix(data = my_values, nrow = 2, ncol = 5, byrow = TRUE)
+# dimesnsions of matrix dont match multiples of length of sequences 
+```
+
+```{r}
+#produces 12 values,, warning says we dont have complete set of multiples of our orignial sequence that fits in matrix when we popualte it/ if you view it it starts repeating  
+my_matrix2 <- matrix(data = my_values, nrow = 3, ncol = 4, byrow = TRUE)
+```
+
+## Matrix math
+
+```{r}
+matrix_a <- matrix(data = seq(from = 2, to = 5, length = 10), 
+                   nrow = 2, 
+                   ncol = 5, 
+                   byrow = TRUE)
+```
+
+```{r}
+my_matrix - matrix_a
+```
+
+```{r}
+my_matrix + matrix_a
+```
+
+## Matrix Multiplication
+
+```{r}
+cats <- matrix(data = c(0, 4, 3, 1), 
+nrow = 2, 
+ncol = 2, 
+byrow = TRUE)
+dogs <- matrix(data =c(6,-3, 0 , 2),
+               nrow = 2, 
+               ncol = 2, 
+               byrow = TRUE)
+dogs %*% cats
+```
+
+## Leslie Matrix ex:
+
+```{r}
+insect_leslie <- matrix(data = c(0, 0, 600, 0.2, 0, 0, 0, 0.08, 0),
+                        nrow = 3, 
+                        ncol = 3, 
+                        byrow =TRUE)
+#give an initial condition, creating a vector matrix wiht single column, write columns in correct order), 2nd matrix taking dot product of what were taking coefficient 
+
+insect_y0 <- c(12000, 700, 500)
+
+```
+
+## Find population structure for each life stage at t = 1 year:
+
+```{r}
+#%*% used for dot product only, populaiton at end of 1st cycle 
+insect_year1 <- insect_leslie %*% insect_y0 
+
+
+```
+
+find population structure for t= 2 years
+
+```{r}
+insect_2 <- insect_leslie %*% insect_year1
 ```
